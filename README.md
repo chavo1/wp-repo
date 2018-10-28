@@ -1,1 +1,1 @@
-# wp-repo
+# wp-training repo
