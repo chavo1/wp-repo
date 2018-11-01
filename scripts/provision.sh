@@ -91,7 +91,7 @@ sudo service mysql restart
 # Import SQL file
 cd /vagrant
 
-mysql -uroot -proot wordpress < wordpress.sql
+mysql -uroot -proot wordpress < conf/wordpress.sql
 
 sudo service mysql restart
 
@@ -162,7 +162,7 @@ sudo service apache2 reload
 # apt-cache search php7-*
 
 sudo rm /etc/apache2/mods-enabled/dir.conf
-sudo cp /vagrant/dir.conf /etc/apache2/mods-enabled/dir.conf
+sudo cp /vagrant/conf/dir.conf /etc/apache2/mods-enabled/dir.conf
 sudo service apache2 restart
 
 # ---------------------------------------------------------------------------------------------------------------------
