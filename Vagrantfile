@@ -12,7 +12,6 @@ Vagrant.configure("2") do |config|
   config.vm.define "web01" do |subconfig|
     subconfig.vm.box = "chavo1/trusty64"
     subconfig.vm.network "private_network", ip: "192.168.56.56"
-     # If you have trouble with NFS above, comment it out and use the following instead
     subconfig.vm.synced_folder "./www", "/var/www/app/public", :mount_options => ["dmode=777", "fmode=666"]
     subconfig.vm.synced_folder "./www", "/var/www/app/public", :owner=> 'www-data', :group=>'root'
     subconfig.vm.provision :shell, keep_color: true, path: "scripts/provision.sh"
