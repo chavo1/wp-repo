@@ -1,22 +1,11 @@
-#filename: Vagrantfile.provision.sh
+#filename: provision.sh
 #!/usr/bin/env bash
-
-###########################################
-# by Ricardo Canelas                      #
-# https://gist.github.com/ricardocanelas  #
-#-----------------------------------------#
-# + Apache                                #
-# + PHP 7.1                               #
-# + MySQL 5.6 or MariaDB 10.1             #
-# + NodeJs, Git, Composer, etc...         #
-###########################################
-
 
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Variables & Functions
 # ---------------------------------------------------------------------------------------------------------------------
-APP_DATABASE_NAME='wordpress'
+#APP_DATABASE_NAME='wordpress'
 
 echoTitle () {
     echo -e "\033[0;30m\033[42m -- $1 -- \033[0m"
@@ -73,27 +62,27 @@ sudo service apache2 restart
 # echoTitle 'MYSQL-Database'
 # ---------------------------------------------------------------------------------------------------------------------
 # Setting MySQL (username: root) ~ (password: root)
-sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password password root'
-sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password_again password root'
+#sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password password root'
+#sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password_again password root'
 
 # Installing packages
-sudo apt-get install -y mysql-server-5.6 mysql-client-5.6 mysql-common-5.6
-sudo apt-get update
-sudo apt-get install -y mysql-server
+#sudo apt-get install -y mysql-server-5.6 mysql-client-5.6 mysql-common-5.6
+#sudo apt-get update
+#sudo apt-get install -y mysql-server
 
 # Setup database
-mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS $APP_DATABASE_NAME;";
-mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root';"
-mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'root';"
+# mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS $APP_DATABASE_NAME;";
+# mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root';"
+#mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'root';"
 
-sudo service mysql restart
+# sudo service mysql restart
 
 # Import SQL file
-cd /vagrant
+# cd /vagrant
 
-mysql -uroot -proot wordpress < conf/wordpress.sql
+# mysql -uroot -proot wordpress < conf/wordpress.sql
 
-sudo service mysql restart
+# sudo service mysql restart
 
 
 
