@@ -1,4 +1,4 @@
-#filename: Vagrantfile.provision.sh
+#filename: mysql.sh
 #!/usr/bin/env bash
 
 # + MySQL 5.6
