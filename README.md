@@ -10,3 +10,7 @@
 ## DONE
 - Create base Vagranfile
 - Use sample `provision.sh`
+- Create a trusty64 box
+- Update Vagrantfile to use our new box
+- Separate MYSQL and WP in two provision script
+- Update Vagrantfile to have two boxes ( db01 web01 )
