@@ -38,6 +38,9 @@ resource "null_resource" "null" {
   provisioner "remote-exec" {
     inline = [
       "uptime",
+      "sed -i -e \"2i define('WP_HOME','https://${module.server.public_ip}');\" /var/www/app/public/wp-config.php",
+      "sed -i -e \"3i define('WP_SITEURL','https://${module.server.public_ip}');\" /var/www/app/public/wp-config.php",
+      "sed -i -e \"4i define('RELOCATE',true);\" /var/www/app/public/wp-config.php",
       "sudo sed -i 's|192.168.56.55|${module.mysql.private_ip_db}|g' /var/www/app/public/wp-config.php",
     ]
   }
