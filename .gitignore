@@ -1,2 +1,5 @@
 .vagrant/
 .travis.yml
+.terraform
+terraform.tfvars
+terraform.tfstate*

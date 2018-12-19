@@ -1,8 +1,6 @@
-#filename: mysql.sh
 #!/usr/bin/env bash
 
 # + MySQL 5.6
-
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Variables & Functions
@@ -36,7 +34,12 @@ sudo sed -i 's|127.0.0.1|0.0.0.0|g' /etc/mysql/my.cnf
 sudo service mysql restart
 
 # Import SQL file
+
 cd /vagrant
+
+sed -i 's/utf8mb4/utf8/g' /vagrant/conf/wordpress.sql
+sed -i 's/utf8_unicode_ci/utf8_general_ci/g' /vagrant/conf/wordpress.sql
+sed -i 's/utf8_unicode_520_ci/utf8_general_ci/g' /vagrant/conf/wordpress.sql
 
 mysql -uroot -proot wordpress < conf/wordpress.sql
 

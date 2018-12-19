@@ -1,4 +1,3 @@
-#filename: provision.sh
 #!/usr/bin/env bash
 
 
@@ -17,8 +16,8 @@ echoTitle () {
 echoTitle 'Virtual Machine Setup'
 # ---------------------------------------------------------------------------------------------------------------------
 # Update packages
-apt-get update -qq
-apt-get -y install git curl vim
+sudo apt-get update -qq
+sudo apt-get -y install git curl vim
 
 
 
@@ -26,7 +25,7 @@ apt-get -y install git curl vim
 echoTitle 'Installing and Setting: Apache'
 # ---------------------------------------------------------------------------------------------------------------------
 # Install packages
-apt-get install -y apache2 libapache2-mod-fastcgi apache2-mpm-worker
+sudo apt-get install -y apache2 libapache2-mod-fastcgi apache2-mpm-worker
 
 # linking Vagrant directory to Apache 2.4 public directory
 # rm -rf /var/www
@@ -118,7 +117,7 @@ sudo service apache2 restart
 echoTitle 'Installing: PHP'
 # ---------------------------------------------------------------------------------------------------------------------
 # Add repository
-sudo add-apt-repository ppa:ondrej/php
+yes '' | sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install -y python-software-properties software-properties-common
 
@@ -150,8 +149,10 @@ sudo service apache2 reload
 # Packages Available:
 # apt-cache search php7-*
 
-sudo rm /etc/apache2/mods-enabled/dir.conf
+sudo rm -f /etc/apache2/mods-enabled/dir.conf
+sudo rm -f /etc/apache2/mods-available/dir.conf
 sudo cp /vagrant/conf/dir.conf /etc/apache2/mods-enabled/dir.conf
+sudo cp /vagrant/conf/dir.conf /etc/apache2/mods-available/dir.conf
 sudo service apache2 restart
 
 # ---------------------------------------------------------------------------------------------------------------------
