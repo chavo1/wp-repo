@@ -1,0 +1,28 @@
+---
+driver:
+  name: terraform
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: ubuntu
+
+verifier:
+  name: terraform
+  reporter: doc
+  systems:
+    - name: default
+      backend: ssh
+      user: ubuntu
+      hosts_output: public_ip
+      key_files:
+       - id_rsa
+      controls:
+      - check_pkg
+      - operating_system
+      - check_website
+      - gen
+
+suites:
+  - name: default
