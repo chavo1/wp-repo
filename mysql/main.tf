@@ -5,7 +5,7 @@ resource "aws_instance" "db01" {
 
   connection {
     user        = "ubuntu"
-    private_key = "${file("~/.ssh/id_rsa_db")}"
+    private_key = "${file("id_rsa_db")}"
   }
 
   provisioner "remote-exec" {

@@ -32,7 +32,7 @@ resource "null_resource" "null" {
   connection {
     host        = "${module.server.public_ip}"
     user        = "ubuntu"
-    private_key = "${file("~/.ssh/id_rsa")}"
+    private_key = "${file("id_rsa")}"
   }
 
   provisioner "remote-exec" {
