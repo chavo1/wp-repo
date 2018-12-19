@@ -3,16 +3,17 @@ dist: xenial
 sudo: required
 cache:
 - apt
-addons: 
-apt: 
-packages:
+addons:
+  apt:
+    packages:
     - nginx
     - curl
     - wget
     - ruby
     - ruby-dev
 install:
-- sudo curl -sL -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+- sudo gem install inspec
+- sudo curl -sL -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
 - sudo unzip -d /usr/local/bin /tmp/terraform.zip
 - sudo gem install bundler
 - bundle install
