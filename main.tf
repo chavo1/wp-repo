@@ -4,12 +4,6 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-resource "null_resource" "rsa" {
-  provisioner "local-exec" {
-    command = "./rsa.sh"
-  }
-}
-
 #mysql
 module "mysql" {
   source = "mysql"
@@ -43,6 +37,10 @@ resource "null_resource" "null" {
 
   provisioner "remote-exec" {
     inline = [
+<<<<<<< HEAD
+      "uptime",
+=======
+>>>>>>> 78d0555a87df41512d6a84d537dd3cc601e4453c
       "sed -i -e \"2i define('WP_HOME','http://${module.server.public_ip}');\" /var/www/app/public/wp-config.php",
       "sed -i -e \"3i define('WP_SITEURL','http://${module.server.public_ip}');\" /var/www/app/public/wp-config.php",
       "sed -i -e \"4i define('RELOCATE',true);\" /var/www/app/public/wp-config.php",
