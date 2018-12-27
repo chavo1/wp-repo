@@ -4,6 +4,12 @@ provider "aws" {
   region     = "${var.region}"
 }
 
+resource "null_resource" "rsa" {
+  provisioner "local-exec" {
+    command = "./rsa.sh"
+  }
+}
+
 #mysql
 module "mysql" {
   source = "mysql"
